@@ -672,7 +672,7 @@ int adventurerCard(int drawntreasure, struct gameState *state, int currentPlayer
 //Smithy Card play for cardEffect function
 int smithyCard(int currentPlayer, struct gameState *state, int handPos) {
   //+3 Cards
-  for (i = 0; i < 3; i++)
+  for (int i = 0; i < 3; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -706,13 +706,13 @@ int minionCard(struct gameState *state, int handPos, int currentPlayer, int choi
 
     //Changed from draw 4 to draw 2
     //draw 4
-    for (i = 0; i < 2; i++)
+    for (int i = 0; i < 2; i++)
     {
       drawCard(currentPlayer, state);
     }
 
     //other players discard hand and redraw if hand size > 4
-    for (i = 0; i < state->numPlayers; i++)
+    for (int i = 0; i < state->numPlayers; i++)
     {
       if (i != currentPlayer)
       {
@@ -727,7 +727,7 @@ int minionCard(struct gameState *state, int handPos, int currentPlayer, int choi
 
           //Changed from draw 4 to draw 7
           //draw 4
-          for (j = 0; j < 7; j++)
+          for (int j = 0; j < 7; j++)
           {
             drawCard(i, state);
           }
@@ -742,11 +742,11 @@ int minionCard(struct gameState *state, int handPos, int currentPlayer, int choi
 //Cutpurse play for cardEffect
 int cutpurseCard(struct gameState *state, int currentPlayer, int handPos) {
   updateCoins(currentPlayer, state, 2);
-  for (i = 0; i < state->numPlayers; i++)
+  for (int i = 0; i < state->numPlayers; i++)
   {
     if (i != currentPlayer)
     {
-      for (j = 0; j < state->handCount[i]; j++)
+      for (int j = 0; j < state->handCount[i]; j++)
       {
         //Changed from state->hand[i][j] == copper
         if (state->hand[i][j] == gold)
@@ -754,9 +754,9 @@ int cutpurseCard(struct gameState *state, int currentPlayer, int handPos) {
           discardCard(j, i, state, 0);
           break;
         }
-        if (j == state->handCount[i])
+        if (int j == state->handCount[i])
         {
-          for (k = 0; k < state->handCount[i]; k++)
+          for (int k = 0; k < state->handCount[i]; k++)
           {
             if (DEBUG)
               printf("Player %d reveals card number %d\n", i, state->hand[i][k]);
@@ -776,7 +776,7 @@ int cutpurseCard(struct gameState *state, int currentPlayer, int handPos) {
 
 int council_roomCard(struct gameState *state, int currentPlayer, int handPos) {
   //+4 Cards
-  for (i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -786,7 +786,7 @@ int council_roomCard(struct gameState *state, int currentPlayer, int handPos) {
   state->numBuys+2;
 
   //Each other player draws a card
-  for (i = 0; i < state->numPlayers; i++)
+  for (int i = 0; i < state->numPlayers; i++)
   {
     //Changed from i != currentPlayer
     if ( i == currentPlayer )
