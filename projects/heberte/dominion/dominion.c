@@ -683,7 +683,7 @@ int smithyCard(int currentPlayer, struct gameState *state, int handPos) {
 }
 
 //Minion play for cardEffect
-int minionCard(struct gameState *state, int handPos, int currentPlayer) {
+int minionCard(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2) {
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
