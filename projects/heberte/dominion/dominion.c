@@ -754,7 +754,7 @@ int cutpurseCard(struct gameState *state, int currentPlayer, int handPos) {
           discardCard(j, i, state, 0);
           break;
         }
-        if (int j == state->handCount[i])
+        if (j == state->handCount[i])
         {
           for (int k = 0; k < state->handCount[i]; k++)
           {
@@ -783,7 +783,7 @@ int council_roomCard(struct gameState *state, int currentPlayer, int handPos) {
 
   //Changed from state-numBuys++
   //+1 Buy
-  state->numBuys+2;
+  state->numBuys = state->numBuys + 2;
 
   //Each other player draws a card
   for (int i = 0; i < state->numPlayers; i++)
