@@ -21,7 +21,6 @@ int main() {
   int players = 2;
   int currPlayer;
   int otherPlayer;
-  int i;
   int error = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
   int cards[10] = {adventurer, embargo, village, minion, mine, cutpurse,
@@ -30,7 +29,7 @@ int main() {
   //Start the game
   initializeGame(players, cards, seed, &game);
 
-  printf("\t\t\tTesting adventurerCard Function\n");
+  printf("\t\t\tTesting council_roomCard Function\n");
 
   printf("Test 1 - Current Player and Other Player in bounds\n");
   //Copy game state to the test game
@@ -38,7 +37,7 @@ int main() {
   currPlayer = 0;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handpos);
+  council_roomCard(&testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + addedCards - discarded);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer] + discarded);
@@ -58,7 +57,7 @@ int main() {
   currPlayer = -1;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handpos);
+  council_roomCard(&testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
@@ -78,7 +77,7 @@ int main() {
   currPlayer = 2;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handpos);
+  council_roomCard(&testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
