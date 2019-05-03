@@ -46,7 +46,7 @@ int main() {
 
   //Test if the current player received an additional buy
   printf("Test 2 - Current player has an additional buy\n");
-  printf("Number of buys = %d, expected number of buys = %d\n", testgame->numBuys, game->numBuys + addedBuy);
+  printf("Number of buys = %d, expected number of buys = %d\n", testgame.numBuys, game.numBuys + addedBuy);
 
   //Test if each player received an additional card
   printf("Test 3 - Other player also has an additional card in their hand\n");
@@ -70,7 +70,7 @@ int main() {
     printf("Fail - return state not 0\n");
     error++;
   }
-  if (testgame->numBuys != (game->numBuys + addedBuy)) {
+  if (testgame.numBuys != (game.numBuys + addedBuy)) {
     printf("Fail - number of buys inconsistent\n");
     error++;
   }
