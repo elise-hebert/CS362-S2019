@@ -30,7 +30,7 @@ int main() {
   printf("\t\t\tTesting cutpurseCard Function\n");
   printf("For reference: Gold = %d, Silver = %d, Copper = %d\n", gold, silver, copper);
 
-  printf("Test 1 - Other player has 1 copper which we expect to be gone\n");
+  printf("Test 1 - Other player has 1 copper which we expect to be gone. Should show 1 & -1\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = copper;
@@ -38,7 +38,7 @@ int main() {
   testgame.handCount[otherPlayer] = 2;
   cutpurseCard(&testgame, currPlayer, handpos);
 
-  printf("Card count in hand = %d, card in hand = %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0]);
+  printf("Card count in hand = %d, cards  in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
   if (testgame.handCount[otherPlayer] != 1) {
     printf("Test 1 - Fail\n");
     error++;
