@@ -15,14 +15,12 @@
 
 int main() {
   int  discarded = 1;
-  int treasureCards;
-  int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0; //Set up for the adventurer
+  int addedCards = 4;
+  int handpos = 0;
   int seed = 1000;
   int players = 2;
-  int currPlayer = 0;
-  int passedCard;
-  int temp[MAX_HAND];
-  int z = 0;
+  int currPlayer;
+  int otherPlayer;
   int i;
   int errors = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
@@ -34,57 +32,70 @@ int main() {
 
   printf("\t\t\tTesting adventurerCard Function\n");
 
-  printf("Test 1 - treasureCards = 0, expecting 2 treasure cards in hand\n");
+  printf("Test 1 - Current Player and Other Player in bounds\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  drawntreasure = 0;
-  adventurerCard(drawntreasure, &testgame, currPlayer, passedCard, temp, z);
+  currPlayer = 0;
+  otherPlayer = 1;
+  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  council_roomCard(testgame, currPlayer, handPos);
 
-  printf("Treasure cards in hand = %d\n", (testgame.handCount[currPlayer] - game.handCount[currPlayer]));
-  if ((testgame.handCount[currPlayer] - game.handCount[currPlayer]) != 2) {
-    printf("Test 1 - Fail\n");
+  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + addedCards - discarded);
+  printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer] + discarded);
+
+  if (testgame.handCount[currPlayer] != (game.handCount[currPlayer]+addedCards - discarded)) {
+    printf("Test 1 - Fail, current player does not have expected hand count\n");
+    error++;
+  }
+  if (testgame.handCount[otherPlayer] != (game.handCount[otherPlayer]+discarded)){
+    printf("Test 1 - Fail, other player does not have expected hand count\n");
     error++;
   }
 
-  printf("Test 2 - treasureCards = 1, expecting 1 treasure card in hand\n");
+  printf("Test 2 - Current Player is a negative number\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  drawntreasure = 1;
-  adventurerCard(drawntreasure, &testgame, currPlayer, passedCard, temp, z);
+  currPlayer = -1;
+  otherPlayer = 1;
+  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  council_roomCard(testgame, currPlayer, handPos);
 
-  printf("Treasure cards in hand = %d\n", (testgame.handCount[currPlayer] - game.handCount[currPlayer]));
-  if ((testgame.handCount[currPlayer] - game.handCount[currPlayer]) != 1) {
-    printf("Test 2 - Fail\n");
+  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
+  printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
+
+  if (testgame.handCount[currPlayer] != 0) {
+    printf("Test 2 - Fail, current player should have no cards\n");
+    error++;
+  }
+  if (testgame.handCount[otherPlayer] != game.handCount[otherPlayer]){
+    printf("Test 2 - Fail, other player does not have expected hand count\n");
     error++;
   }
 
-  printf("Test 3 - treasureCards = 2, expecting 0 treasure cards in hand\n");
+  printf("Test 3 - Current Player assigned positive number beyond bounds\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  drawntreasure = 2;
-  adventurerCard(drawntreasure, &testgame, currPlayer, passedCard, temp, z);
+  currPlayer = 2;
+  otherPlayer = 1;
+  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  council_roomCard(testgame, currPlayer, handPos);
 
-  printf("Treasure cards in hand = %d\n", (testgame.handCount[currPlayer] - game.handCount[currPlayer]));
-  if ((testgame.handCount[currPlayer] - game.handCount[currPlayer]) != 0) {
-    printf("Test 3 - Fail\n");
+  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
+  printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
+
+  if (testgame.handCount[currPlayer] != 0) {
+    printf("Test 3 - Fail, current player should have zero cards\n");
+    error++;
+  }
+  if (testgame.handCount[otherPlayer] != (game.handCount[otherPlayer])){
+    printf("Test 3 - Fail, other player does not have expected hand count\n");
     error++;
   }
 
-  printf("Test 4 - treasureCards = -1, expecting 0 treasure cards in hand\n");
-  //Copy game state to the test game
-  memcpy(&testgame, &game, sizeof(struct gameState));
-  drawntreasure = -1;
-  adventurerCard(drawntreasure, &testgame, currPlayer, passedCard, temp, z);
-
-  printf("Treasure cards in hand = %d\n", (testgame.handCount[currPlayer] - game.handCount[currPlayer]));
-  if ((testgame.handCount[currPlayer] - game.handCount[currPlayer]) != 0) {
-    printf("Test 4 - Fail\n");
-    error++;
-  }
 
   //Check if any errors occurred, if not, it passed the tests
   if (error == 0) {
-    printf("Passed all tests for adventurerCard Function\n");
+    printf("Passed all tests for council_roomCard Function\n");
   } else {
     printf("Total errors = %d\n", errors);
   }

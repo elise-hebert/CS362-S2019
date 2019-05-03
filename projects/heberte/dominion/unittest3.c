@@ -18,6 +18,7 @@ int main() {
   int seed = 1000;
   int players = 2;
   int currPlayer = 0;
+  int otherPlayer = 1;
   int i;
   int errors = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
@@ -96,7 +97,7 @@ int main() {
 
   //Check if any errors occurred, if not, it passed the tests
   if (error == 0) {
-    printf("Passed all tests for adventurerCard Function\n");
+    printf("Passed all tests for cutpurseCard Function\n");
   } else {
     printf("Total errors = %d\n", errors);
   }

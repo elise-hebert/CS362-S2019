@@ -59,13 +59,16 @@ int main() {
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + treasureCards - discarded)) {
     printf("Fail - expected hand count and actual hand count are not the same\n");
     error++;
-  } else if (testgame.hand[currPlayer][testgame.handCount[currPlayer]] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != silver) {
+  }
+  if (testgame.hand[currPlayer][testgame.handCount[currPlayer]] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != silver) {
     printf("Fail - last two cards are not treasure\n");
     error++;
-  } else if (testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != silver) {
+  }
+  if (testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != silver) {
     printf("Fail - last two cards are not treasure\n");
     error++;
-  }else if (returnstate != 0) {
+  }
+  if (returnstate != 0) {
     printf("Fail - Return did not equal zero\n");
     error++;
   }

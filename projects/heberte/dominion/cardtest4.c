@@ -74,19 +74,24 @@ int main() {
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + addedCards - discarded)) {
     printf("Fail - not the right number of cards in hand\n");
     error++;
-  } else if (returnstate != 0) {
+  }
+  if (returnstate != 0) {
     printf("Fail - return state not 0\n");
     error++;
-  } else if (testgame->numBuys != (game->numBuys + addedBuy)) {
+  }
+  if (testgame->numBuys != (game->numBuys + addedBuy)) {
     printf("Fail - number of buys inconsistent\n");
     error++;
-  } else if (testgame.handCount[otherPlayer] != (game.handCount[otherPlayer] + playersAdd)) {
+  }
+  if (testgame.handCount[otherPlayer] != (game.handCount[otherPlayer] + playersAdd)) {
     printf("Fail - other player did not get an additional card in hand\n");
     error++;
-  } else if (testgame.deckCount[currPlayer] != (game.deckCount[currPlayer] - addedCards)) {
+  }
+  if (testgame.deckCount[currPlayer] != (game.deckCount[currPlayer] - addedCards)) {
     printf("Fail - current player's deck count is incorrect\n");
     error++;
-  } else if (testgame.deckCount[otherPlayer] != (game.deckCount[otherPlayer] - playersAdd)) {
+  }
+  if (testgame.deckCount[otherPlayer] != (game.deckCount[otherPlayer] - playersAdd)) {
     printf("Fail - other player's deck count is incorrect\n");
     error++;
   }

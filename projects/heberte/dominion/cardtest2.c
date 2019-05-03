@@ -59,10 +59,12 @@ int main() {
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + addedCards - discarded)) {
     printf("Fail - not the right number of cards in hand\n");
     error++;
-  } else if (returnstate != 0) {
+  }
+  if (returnstate != 0) {
     printf("Fail - return state not 0\n");
     error++;
-  } else if (testgame.deckCount[currPlayer] != (game.deckCount[currPlayer] - addedCards)) {
+  }
+  if (testgame.deckCount[currPlayer] != (game.deckCount[currPlayer] - addedCards)) {
     printf("Fail - deck counts do not match\n");
     error++;
   }
