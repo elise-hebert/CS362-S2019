@@ -112,7 +112,7 @@ int main() {
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
-  if (testgame->coins != game->coins) {
+  if (testgame.coins != game.coins) {
     printf("Test 5 - Fail, coins have been added\n");
     error++;
   } else if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
