@@ -45,15 +45,6 @@ int main() {
   printf("Test 2 - Last two cards are treasure cards in hand\n");
   printf("Last two cards = %d %d\n", testgame.hand[currPlayer][testgame.handCount[currPlayer]], testgame.hand[currPlayer][testgame.handCount[currPlayer] - 1]);
 
-  //Test if the adventurer card is still in the player's hand
-  printf("Test 3 - Adventurer card not in hand\n");
-  for (i = 0; i < testgame.handCount; i++) {
-    printf("Card %d: %d\n", (i+1), testgame.hand[currPlayer][i]);
-    if (testgame.hand[currPlayer][i] == adventurer) {
-      printf("Fail - %s still in hand\n", TESTCARD);
-      error++;
-    }
-  }
 
   //My assert tests, if it falls into any if statement, I add an error and print the problem
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + treasureCards - discarded)) {
