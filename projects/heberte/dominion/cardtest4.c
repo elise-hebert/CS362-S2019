@@ -38,7 +38,7 @@ int main() {
 
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  returnstate = cardEffect(council_room, choice1, choice2, choice3, handpos, &bonus);
+  returnstate = cardEffect(council_room, choice1, choice2, choice3, &testgame, handpos, &bonus);
 
   //Test if the person has 3 new cards in their hands
   printf("Test 1 - Current Player drew 4 cards in hand\n");
@@ -99,7 +99,7 @@ int main() {
   if (error == 0) {
     printf("Passed all tests for %s\n", TESTCARD);
   } else {
-    printf("Total errors = %d\n", errors);
+    printf("Total errors = %d\n", error);
   }
 
   return 0;
