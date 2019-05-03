@@ -85,7 +85,7 @@ int main() {
   if (error == 0) {
     printf("Passed all tests for adventurerCard Function\n");
   } else {
-    printf("Total errors = %d\n", errors);
+    printf("Total errors = %d\n", error);
   }
 
   return 0;
