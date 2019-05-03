@@ -36,7 +36,7 @@ int main() {
 
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  returnstate = cardEffect(village, choice1, choice2, choice3, &testgame, andpos, &bonus);
+  returnstate = cardEffect(village, choice1, choice2, choice3, &testgame, handpos, &bonus);
 
   //Test if the person has 1 new card in their hands
   printf("Test 1 - Drew 1 card in hand\n");
