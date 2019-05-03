@@ -36,7 +36,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 0;
-  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
+  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Coins = %d\n", testgame.coins);
   if (testgame.coins != (game.coins + 2)) {
@@ -91,7 +91,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 1;
-  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
+  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
@@ -108,7 +108,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 0;
   choice2 = 0;
-  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
+  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
