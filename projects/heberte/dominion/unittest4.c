@@ -38,7 +38,7 @@ int main() {
   currPlayer = 0;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handPos);
+  council_roomCard(testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + addedCards - discarded);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer] + discarded);
@@ -58,7 +58,7 @@ int main() {
   currPlayer = -1;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handPos);
+  council_roomCard(testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
@@ -78,7 +78,7 @@ int main() {
   currPlayer = 2;
   otherPlayer = 1;
   printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(testgame, currPlayer, handPos);
+  council_roomCard(testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
@@ -97,7 +97,7 @@ int main() {
   if (error == 0) {
     printf("Passed all tests for council_roomCard Function\n");
   } else {
-    printf("Total errors = %d\n", errors);
+    printf("Total errors = %d\n", error);
   }
 
   return 0;

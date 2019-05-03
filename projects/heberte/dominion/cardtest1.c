@@ -53,11 +53,11 @@ int main() {
     error++;
   }
   if (testgame.hand[currPlayer][testgame.handCount[currPlayer]] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]] != silver) {
-    printf("Fail - last two cards are not treasure\n");
+    printf("Fail - last card is not treasure\n");
     error++;
   }
   if (testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != copper || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != gold || testgame.hand[currPlayer][testgame.handCount[currPlayer]-1] != silver) {
-    printf("Fail - last two cards are not treasure\n");
+    printf("Fail - second to last card is not treasure\n");
     error++;
   }
   if (returnstate != 0) {

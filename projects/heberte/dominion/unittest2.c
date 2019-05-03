@@ -36,10 +36,10 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 0;
-  minonCard(&testgame, handPos, currPlayer, choice1, choice2);
+  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
 
-  printf("Coins = %d\n", testgame->coins);
-  if (testgame->coins != (game->coins + 2)) {
+  printf("Coins = %d\n", testgame.coins);
+  if (testgame.coins != (game.coins + 2)) {
     printf("Test 1 - Fail\n");
     error++;
   }
@@ -54,7 +54,7 @@ int main() {
   for (i = 0; i < 3; i++) {
     testgame.hand[otherPlayer][i] = gold;
   }
-  minionCard(&testgame, handPos, currPlayer, choice1, choice2);
+  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Cards in hand = %d, Other player card count = %d\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   if (testgame.handCount[currPlayer] != 4) {
@@ -75,7 +75,7 @@ int main() {
   for (i = 0; i < 6; i++) {
     testgame.hand[otherPlayer][i] = gold;
   }
-  minionCard(&testgame, handPos, currPlayer, choice1, choice2);
+  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Cards in hand = %d, Other player card count = %d\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   if (testgame.handCount[currPlayer] != 4) {
@@ -91,11 +91,11 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 1;
-  minonCard(&testgame, handPos, currPlayer, choice1, choice2);
+  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
 
-  printf("Coins = %d, expected coins = %d\n", testgame->coins, game->coins);
+  printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
-  if (testgame->coins != game->coins) {
+  if (testgame.coins != game.coins) {
     printf("Test 4 - Fail, coins have been added\n");
     error++;
   } else if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
@@ -108,9 +108,9 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 0;
   choice2 = 0;
-  minonCard(&testgame, handPos, currPlayer, choice1, choice2);
+  minonCard(&testgame, handpos, currPlayer, choice1, choice2);
 
-  printf("Coins = %d, expected coins = %d\n", testgame->coins, game->coins);
+  printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
   if (testgame->coins != game->coins) {
     printf("Test 5 - Fail, coins have been added\n");
@@ -124,7 +124,7 @@ int main() {
   if (error == 0) {
     printf("Passed all tests for minionCard Function\n");
   } else {
-    printf("Total errors = %d\n", errors);
+    printf("Total errors = %d\n", error);
   }
 
   return 0;
