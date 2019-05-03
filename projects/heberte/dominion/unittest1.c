@@ -16,7 +16,6 @@
 int main() {
   int  discarded = 1;
   int treasureCards;
-  int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0; //Set up for the adventurer
   int seed = 1000;
   int players = 2;
   int currPlayer = 0;
