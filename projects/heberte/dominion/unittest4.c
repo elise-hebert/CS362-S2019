@@ -36,7 +36,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   currPlayer = 0;
   otherPlayer = 1;
-  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   council_roomCard(&testgame, currPlayer, handpos);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + addedCards - discarded);
@@ -51,18 +51,18 @@ int main() {
     error++;
   }
 
-  printf("Test 2 - Current Player is a negative number\n");
+  printf("Test 2 - Current Player is a negative number, so should have null results\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   currPlayer = -1;
   otherPlayer = 1;
-  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   council_roomCard(&testgame, currPlayer, handpos);
 
-  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
+  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], -1);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
 
-  if (testgame.handCount[currPlayer] != 0) {
+  if (testgame.handCount[currPlayer] != -1) {
     printf("Test 2 - Fail, current player should have no cards\n");
     error++;
   }
@@ -71,18 +71,18 @@ int main() {
     error++;
   }
 
-  printf("Test 3 - Current Player assigned positive number beyond bounds\n");
+  printf("Test 3 - Current Player assigned positive number beyond bounds, so count should be null\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   currPlayer = 2;
   otherPlayer = 1;
-  printf("Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
+  printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   council_roomCard(&testgame, currPlayer, handpos);
 
-  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], 0);
+  printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], -1);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
 
-  if (testgame.handCount[currPlayer] != 0) {
+  if (testgame.handCount[currPlayer] != -1) {
     printf("Test 3 - Fail, current player should have zero cards\n");
     error++;
   }
