@@ -15,7 +15,7 @@
 
 int main() {
   int  discarded = 1;
-  int treasureCards;
+  int drawntreasure;
   int seed = 1000;
   int players = 2;
   int currPlayer = 0;
