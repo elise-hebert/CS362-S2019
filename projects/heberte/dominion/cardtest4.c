@@ -17,7 +17,7 @@
 
 int main() {
   int addedCards = 4;  //Expected to have 3 more cards in the player's hand
-  int discard = 1;  //For discarding the Council Room at the end
+  int discarded = 1;  //For discarding the Council Room at the end
   int playersAdd = 1; //For the card each player gets to their hands
   int addedBuy = 1; //For the buy the current player should get
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0; //Set up for the smithy has no choices and no bonus
