@@ -19,7 +19,6 @@ int main() {
   int players = 2;
   int currPlayer = 0;
   int otherPlayer = 1;
-  int i;
   int error = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
   int cards[10] = {adventurer, embargo, village, minion, mine, cutpurse,
@@ -29,12 +28,14 @@ int main() {
   initializeGame(players, cards, seed, &game);
 
   printf("\t\t\tTesting cutpurseCard Function\n");
+  printf("For reference: Gold = %d, Silver = %d, Copper = %d\n", gold, silver, copper);
 
   printf("Test 1 - Other player has 1 copper which we expect to be gone\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = copper;
   testgame.hand[otherPlayer][1] = estate;
+  testgame.handCount[otherPlayer] = 2;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in hand = %d, card in hand = %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0]);
@@ -48,6 +49,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = estate;
   testgame.hand[otherPlayer][1] = -500;
+  testgame.handCount[otherPlayer] = 1;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in other hand = %d, card in other hand = %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0]);
@@ -61,6 +63,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = gold;
   testgame.hand[otherPlayer][1] = estate;
+  testgame.handCount[otherPlayer] = 2;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in hand = %d, cards in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
@@ -74,6 +77,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = silver;
   testgame.hand[otherPlayer][1] = estate;
+  testgame.handCount[otherPlayer] = 2;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in hand = %d, cards in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
@@ -87,6 +91,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = -500;
   testgame.hand[otherPlayer][1] = -500;
+  testgame.handCount[otherPlayer] = 0;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in hand = %d\n", testgame.handCount[otherPlayer]);
