@@ -68,7 +68,7 @@ int main() {
   }
 
   //Test 3 - choice 2 is selected and choice 1 with other player having more than 5 cards
-  printf("Test 3 - choice 2 indicated, current player should have 4 cards and other player no change\n");
+  printf("Test 3 - choice 2 indicated, current player should have 4 cards and other player 4 cards\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 0;
