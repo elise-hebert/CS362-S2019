@@ -36,6 +36,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 0;
+  printf("Coins before = %d\n", testgame.coins);
   minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Coins = %d\n", testgame.coins);
@@ -60,7 +61,8 @@ int main() {
   if (testgame.handCount[currPlayer] != 4) {
     printf("Test 2 - Fail, current player doesn't have 4 cards\n");
     error++;
-  } else if (testgame.handCount[otherPlayer] != 3) {
+  }
+  if (testgame.handCount[otherPlayer] != 3) {
     printf("Test 2 - Fail, other player doest not have 3 cards\n");
     error++;
   }
@@ -81,7 +83,8 @@ int main() {
   if (testgame.handCount[currPlayer] != 4) {
     printf("Test 3 - Fail, current player doesn't have 4 cards\n");
     error++;
-  } else if (testgame.handCount[otherPlayer] != 4) {
+  }
+  if (testgame.handCount[otherPlayer] != 4) {
     printf("Test 3 - Fail, other player doest not have 4 cards\n");
     error++;
   }
@@ -94,11 +97,12 @@ int main() {
   minionCard(&testgame, handpos, currPlayer, choice1, choice2);
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
-  printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);
+  printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer]-discarded);
   if (testgame.coins != game.coins) {
     printf("Test 4 - Fail, coins have been added\n");
     error++;
-  } else if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
+  }
+  if ((testgame.handCount[currPlayer]) != (game.handCount[currPlayer]-discarded)) {
     printf("Test 4 - Fail, card count has changed\n");
     error++;
   }
@@ -115,7 +119,8 @@ int main() {
   if (testgame.coins != game.coins) {
     printf("Test 5 - Fail, coins have been added\n");
     error++;
-  } else if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
+  }
+  if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
     printf("Test 5 - Fail, card count has changed\n");
     error++;
   }
