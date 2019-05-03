@@ -45,16 +45,6 @@ int main() {
   printf("Test 2 - If the deck is missing 3 cards only\n");
   printf("Deck count = %d,  expected deck count = %d\n", testgame.deckCount[currPlayer], game.deckCount[currPlayer] - addedCards);
 
-  //Test if the smithy card is still in the player's hand
-  printf("Test 3 - %s card not in hand\n", TESTCARD);
-  for (i = 0; i < testgame.handCount; i++) {
-    printf("Card %d: %d\n", (i+1), testgame.hand[currPlayer][i]);
-    if (testgame.hand[currPlayer][i] == smithy) {
-      printf("Fail - %s still in hand\n", TESTCARD);
-      error++;
-    }
-  }
-
   //My assert tests, checking if the player drew 3 cards,
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + addedCards - discarded)) {
     printf("Fail - not the right number of cards in hand\n");

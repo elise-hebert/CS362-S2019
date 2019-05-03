@@ -60,15 +60,6 @@ int main() {
   printf("Test 5 - Other Player's deck count is accurate\n");
   printf("Deck Count = %d,  expected deck count = %d\n", testgame.deckCount[otherPlayer], game.deckCount[otherPlayer] - playersAdd);
 
-  //Test if the council room card is still in the player's hand
-  printf("Test 6 - %s card not in hand\n", TESTCARD);
-  for (i = 0; i < testgame.handCount; i++) {
-    printf("Card %d: %d\n", (i+1), testgame.hand[currPlayer][i]);
-    if (testgame.hand[currPlayer][i] == council_room) {
-      printf("Fail - %s still in hand\n", TESTCARD);
-      error++;
-    }
-  }
 
   //My version of asserts - each fail will tally up and print out what the fail was without exiting (since there could be multiple)
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + addedCards - discarded)) {

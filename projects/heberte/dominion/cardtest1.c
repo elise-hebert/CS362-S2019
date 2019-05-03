@@ -43,6 +43,7 @@ int main() {
   printf("Handcount = %d,  Expected handcount = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + treasureCards - discarded);
 
   printf("Test 2 - Last two cards are treasure cards in hand\n");
+  printf("Gold = %d, Silver = %d, Copper = %d\n", gold, silver, copper);
   printf("Last two cards = %d %d\n", testgame.hand[currPlayer][testgame.handCount[currPlayer]], testgame.hand[currPlayer][testgame.handCount[currPlayer] - 1]);
 
 

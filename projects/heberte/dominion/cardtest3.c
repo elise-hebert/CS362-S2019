@@ -50,15 +50,6 @@ int main() {
   printf("Test 3 - Deck Count is correct\n");
   printf("Deck Count = %d,  expected deck count = %d\n", testgame.deckCount[currPlayer], game.deckCount[currPlayer] - addedCards);
 
-  //Test if the village card is still in the player's hand
-  printf("Test 4 - %s card not in hand\n", TESTCARD);
-  for (i = 0; i < testgame.handCount; i++) {
-    printf("Card %d: %d\n", (i+1), testgame.hand[currPlayer][i]);
-    if (testgame.hand[currPlayer][i] == village) {
-      printf("Fail - %s still in hand\n", TESTCARD);
-      error++;
-    }
-  }
 
   //Assert tests for handcount, number of actions, return, and deckcount
   if (testgame.handCount[currPlayer] != (game.handCount[currPlayer] + addedCards - discarded)) {
