@@ -120,7 +120,7 @@ int main() {
     printf("Test 5 - Fail, coins have been added\n");
     error++;
   }
-  if ((testgame.handCount[currPlayer]-discarded) != (game.handCount[currPlayer]-discarded)) {
+  if ((testgame.handCount[currPlayer]) != (game.handCount[currPlayer]-discarded)) {
     printf("Test 5 - Fail, card count has changed\n");
     error++;
   }
