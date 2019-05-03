@@ -17,7 +17,7 @@
 
 int main() {
   int addedCards = 1;  //Expected to draw 1 card
-  int discard = 1;  //For discarding the village at the end
+  int discarded = 1;  //For discarding the village at the end
   int addedAction = 2; //Gain 2 actions from village
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0; //Set up for the smithy has no choices and no bonus
   int seed = 1000;
@@ -44,7 +44,7 @@ int main() {
 
   //Test if the player now has 2 additional Actions
   printf("Test 2 - Two actions added for current player\n");
-  printf("Actions = %d,  expected actions = %d\n", testgame->numActions, game->numActions + addedAction);
+  printf("Actions = %d,  expected actions = %d\n", testgame.numActions, game.numActions + addedAction);
 
   //Test if the deckCount is accurate
   printf("Test 3 - Deck Count is correct\n");
@@ -56,7 +56,7 @@ int main() {
     printf("Fail - not the right number of cards in hand\n");
     error++;
   }
-  if (testgame->numActions != (game->numActions + addedAction)) {
+  if (testgame.numActions != (game.numActions + addedAction)) {
     printf("Fail - actions incorrect\n");
     error++;
   }

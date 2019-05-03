@@ -17,10 +17,10 @@
 
 int main() {
   int addedCards = 3;  //Expected to have 3 more cards in the player's hand
-  int discard = 1;  //For discarding the smithy at the end
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0; //Set up for the smithy has no choices and no bonus
   int seed = 1000;
   int players = 2;
+  int discarded = 1;
   int currPlayer = 0;
   int returnstate;
   int error = 0;
