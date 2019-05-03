@@ -47,7 +47,7 @@ int main() {
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   testgame.hand[otherPlayer][0] = estate;
-  testgame.hand[otherPlayer][1] = NULL;
+  testgame.hand[otherPlayer][1] = -500;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in other hand = %d, card in other hand = %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0]);
@@ -85,8 +85,8 @@ int main() {
   printf("Test 5 - Other player has no cards in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
-  testgame.hand[otherPlayer][0] = NULL;
-  testgame.hand[otherPlayer][1] = NULL;
+  testgame.hand[otherPlayer][0] = -500;
+  testgame.hand[otherPlayer][1] = -500;
   cutpurseCard(&testgame, currPlayer, handpos);
 
   printf("Card count in hand = %d\n", testgame.handCount[otherPlayer]);
