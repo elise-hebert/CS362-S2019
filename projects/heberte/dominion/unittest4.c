@@ -22,7 +22,7 @@ int main() {
   int currPlayer;
   int otherPlayer;
   int i;
-  int errors = 0;  //For asserts, if there are no errors, then it passed all tests
+  int error = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
   int cards[10] = {adventurer, embargo, village, minion, mine, cutpurse,
                    sea_hag, tribute, smithy, council_room};
