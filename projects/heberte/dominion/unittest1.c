@@ -33,7 +33,8 @@ int main() {
 
   printf("\t\t\tTesting adventurerCard Function\n");
 
-  printf("Test 1 - treasureCards = 0, expecting 2 treasure cards in hand\n");
+  //Test 1 - expected input is 0 for drawn treasure, so 2 treasure should be added to player's hand
+  printf("Test 1 - set drawn treasure = 0, expecting 2 treasure cards in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   drawntreasure = 0;
@@ -45,7 +46,8 @@ int main() {
     error++;
   }
 
-  printf("Test 2 - treasureCards = 1, expecting 1 treasure card in hand\n");
+  //Test 2 - set drawn treasure to 1, expecting 2 treasure card in hand
+  printf("Test 2 - set drawn treasure = 1, expecting 1 treasure card in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   drawntreasure = 1;
@@ -57,7 +59,8 @@ int main() {
     error++;
   }
 
-  printf("Test 3 - treasureCards = 2, expecting 0 treasure cards in hand\n");
+  //Test 3 - set drawn treasure to 2, expecting no additional cards in hand
+  printf("Test 3 - set drawn treasure = 2, expecting 0 treasure cards in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   drawntreasure = 2;
@@ -69,7 +72,8 @@ int main() {
     error++;
   }
 
-  printf("Test 4 - treasureCards = -1, expecting 0 treasure cards in hand\n");
+  //Test 4 - Set treasure drawn to a negative number
+  printf("Test 4 - set treasure drawn = -1, expecting 0 treasure cards in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
   drawntreasure = -1;

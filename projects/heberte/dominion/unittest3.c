@@ -30,6 +30,7 @@ int main() {
   printf("\t\t\tTesting cutpurseCard Function\n");
   printf("For reference: Gold = %d, Silver = %d, Copper = %d\n", gold, silver, copper);
 
+  //Test 1 - Other player has a copper in their hand
   printf("Test 1 - Other player has 1 copper which we expect to be gone. Should show 1 & -1\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -44,6 +45,7 @@ int main() {
     error++;
   }
 
+  //Test 2 - Other player has cards, but no copper/coins
   printf("Test 2 - Other player has no copper, so no change occurs\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -58,6 +60,7 @@ int main() {
     error++;
   }
 
+  //Test 3 - Player has a gold card, no copper
   printf("Test 3 - Other player has 1 gold which we expect to have no change in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -72,6 +75,7 @@ int main() {
     error++;
   }
 
+  //Test 4 - Player has silver, no copper
   printf("Test 4 - Other player has 1 silver which we expect to have no change in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -86,6 +90,7 @@ int main() {
     error++;
   }
 
+  //Test 5 - player has no cards at all
   printf("Test 5 - Other player has no cards in hand\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));

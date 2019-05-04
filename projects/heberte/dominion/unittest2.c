@@ -31,6 +31,7 @@ int main() {
 
   printf("\t\t\tTesting minionCard Function\n");
 
+  //Test 1 - choice 1 is chosen
   printf("Test 1 - choice 1 indicated, so 2 coins added\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -89,6 +90,7 @@ int main() {
     error++;
   }
 
+  //Test 4 - both choices are selected
   printf("Test 4 - choice 1 indicated and choice 2 indicated, no change is expected\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -107,6 +109,7 @@ int main() {
     error++;
   }
 
+  //Test 5 - neither choice is selected
   printf("Test 5 - choice 1 not indicated, and choice 2 not indicated, no change is expected\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));

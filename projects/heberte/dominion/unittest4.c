@@ -31,6 +31,7 @@ int main() {
 
   printf("\t\t\tTesting council_roomCard Function\n");
 
+  //Test 1 - Both players are indexed within array bounds
   printf("Test 1 - Current Player and Other Player in bounds\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -51,6 +52,7 @@ int main() {
     error++;
   }
 
+  //Test 2 - Current player is a negative number, other player in array bounds
   printf("Test 2 - Current Player is a negative number, so should have null results\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
@@ -71,6 +73,7 @@ int main() {
     error++;
   }
 
+  //Test 3 - Current player assigned positive number outside array bounds, other player in bounds
   printf("Test 3 - Current Player assigned positive number beyond bounds, so count should be null\n");
   //Copy game state to the test game
   memcpy(&testgame, &game, sizeof(struct gameState));
