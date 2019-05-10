@@ -7,10 +7,18 @@ char inputChar()
 {
     // Create a char and an int to calculate ASCII number
     char c;
+    int result = 0;
     // Get a random number between 92 and 125
-    int ascii = (rand() % 91 + 35);
-    // Assign the char to that ASCII number
-    c = ascii;
+    while(result == 0) {
+      int ascii = (rand() % 94 + 32);
+      if (ascii == 32 || ascii == 40 || ascii == 41 || ascii == 91 || ascii == 93
+          || ascii == 97 || ascii == 120 || ascii == 123 || ascii == 125) {
+            // Assign the char to that ASCII number
+            c = ascii;
+            result = 1;
+      }
+
+    }
     return c;
 }
 
@@ -19,7 +27,7 @@ char *inputString()
     char *string = malloc(6*sizeof(char));
     int i, ascii;
     for (i = 0; i < 5; i++) {
-      ascii = (rand() % 97 + 26);
+      ascii = (rand() % 17 + 101);
       string[i] = ascii;
     }
     string[5] = '\0';
