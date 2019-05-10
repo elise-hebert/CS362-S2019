@@ -16,7 +16,7 @@ char inputChar()
 
 char *inputString()
 {
-    char string[6];
+    char *string = malloc(6*sizeof(char));
     int i, ascii;
     for (i = 0; i < 5; i++) {
       ascii = (rand() % 97 + 26);
