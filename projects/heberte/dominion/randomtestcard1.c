@@ -1,13 +1,8 @@
-/*
- * Author: Elise Hebert
- * File: randomtestadventurer.c
- * Date: 5/17/2019
- * Description: This is a random test of the card Adventurer in the Dominion
- * game. It will generate 2000 tests and randomly create a game state each time
- * and check to see if the expected plays occur. Note: used betterTestDrawCard.c
- * as a guide
- *
-*/
+// Author: Elise Hebert
+// Date: 5/17/2019
+// File: randomtestcard.c
+// Description: This will test the Council Room card via random testing. Note: used the
+// betterTestDrawCard.c as a guide
 
 #include "dominion.h"
 #include "dominion_helpers.h"
