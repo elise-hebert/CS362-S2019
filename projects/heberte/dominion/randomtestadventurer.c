@@ -23,7 +23,7 @@ int main() {
   int tr = 0, currplayer, index = 0;
   gameState *G;
   int tmp[MAX_HAND];
-  int handBefore, deckBefore, result;
+  int handBefore, result;
   int totalerror = 0, handerror = 0, holdingerror = 0, returnerror = 0;  //Count the number of fails in random tests
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
@@ -42,13 +42,12 @@ int main() {
     currplayer = floor(Random() * 2);
     //Randomize the player's hand and deck
     G.deckCount[currplayer] = floor(Random() * MAX_DECK);
-    deckBefore = G.deckCount[currPlayer];
     G.discardCount[currplayer] = floor(Random() * MAX_DECK);
     G.handCount[currplayer] = floor(Random() * MAX_HAND);
-    handBefore = G.handCount[currplayer];
+    handBefore = G.handCount[currplayer]+1;
     //To account for the adventurer card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
-    result = adventurerCard(tr, G, currplayer, adventurer, tmp, index);
+    result = adventurerCard(tr, G, currplayer, tmp, index);
     if (G.handCount[currplayer] != handBefore+2) {
       printf("--FAIL Handcount is not increased by 2\n");
       error++;

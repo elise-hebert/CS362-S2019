@@ -1,7 +1,7 @@
 // Author: Elise Hebert
 // Date: 5/17/2019
 // File: randomtestcard.c
-// Description: This will test the Council Room card via random testing. Note: used the
+// Description: This will test the Smithy card via random testing. Note: used the
 // betterTestDrawCard.c as a guide
 
 #include "dominion.h"
@@ -12,19 +12,16 @@
 
 
 int main() {
-  //Setting treasure and index to 0 because the assumption is this would be called
-  //in cardEffect which does set these to 0. If it doesn't that is beyond the
-  //scope of this random test so I will set them as is expected.
-  int tr = 0, currplayer, index = 0;
+  //Setting exected drawn cards and the current player
+  int cards = 3, currplayer;
   gameState *G;
-  int tmp[MAX_HAND];
-  int handBefore, deckBefore, result;
-  int totalerror = 0, handerror = 0, holdingerror = 0, returnerror = 0;  //Count the number of fails in random tests
+  int handBefore, deckBefore, discardBefore, result;
+  int totalerror = 0, handerr = 0, deckerr = 0, discarderr = 0, returnerror = 0;  //Count the number of fails in random tests
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
 
-  printf("-----------Random Testing of Adventurer Card----------------\n");
+  printf("-----------Random Testing of Smithy Card----------------\n");
 
   SelectStream(2);
   PutSeed(3);
@@ -39,26 +36,29 @@ int main() {
     G.deckCount[currplayer] = floor(Random() * MAX_DECK);
     deckBefore = G.deckCount[currPlayer];
     G.discardCount[currplayer] = floor(Random() * MAX_DECK);
+    discardBefore = G.discardCount[currplayer];
     G.handCount[currplayer] = floor(Random() * MAX_HAND);
-    handBefore = G.handCount[currplayer];
-    //To account for the adventurer card, add 1 to the hand in case they have 0
+    handBefore = G.handCount[currplayer]+1;
+    //To account for the smithy card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
-    result = adventurerCard(tr, G, currplayer, adventurer, tmp, index);
-    if (G.handCount[currplayer] != handBefore+2) {
+    G.hand[currplayer][G.handCount-1] = smithy;
+    result = smithyCard(currplayer, G, G.handCount-1);
+    //Expecting the hand to have 2 more than previous (because you gain 3 and discard 1)
+    if (G.handCount[currplayer] != handBefore+card-1) {
       printf("--FAIL Handcount is not increased by 2\n");
       error++;
-      handerror++;
+      handerr++;
     }
-    if (G.hand[currlayer][currplayer.handCount-1] != copper || G.hand[currlayer][currplayer.handCount-1] != gold || G.hand[currlayer][currplayer.handCount-1] != silver) {
-      printf("--FAIL Last card is not treasure\n");
+    if (G.deckCount[currplayer] != deckBefore-card) {
+      printf("--FAIL Deck is not 3 less than before play\n");
       error++;
-      holdingerror++;
+      deckerr++;
 
     }
-    if (G.hand[currlayer][currplayer.handCount-2] != copper || G.hand[currlayer][currplayer.handCount-2] != gold || G.hand[currlayer][currplayer.handCount-2] != silver) {
-      printf("--FAIL Second to last card is not treasure\n");
+    if (G.discardCount[currplayer] != discardBefore+1) {
+      printf("--FAIL Discard count does not have Smithy\n");
       error++;
-      holdingerror++;
+      discarderr++;
     }
     if (result != 0) {
       printf("--FAIL Return is not 0\n");
@@ -72,12 +72,13 @@ int main() {
   if (error == 0) {
     printf("Random Test Passed\n");
   } else {
-    printf("Total number of times handcount was incorrect: %d\n", handerror);
-    printf("Total number of times the last or second to last card was not treasure: %d\n", holdingerror);
+    printf("Total number of times handcount was incorrect: %d\n", handerr);
+    printf("Total number of times deck was incorrect: %d\n", deckerr);
+    printf("Total number of times discard was incorrect: %d\n", discarderr);
     printf("Total number of incorrect returns: %d\n", returnerror);
   }
 
-  printf("----------------Adventurer Complete------------------\n");
+  printf("----------------Smithy Complete------------------\n");
 
   return 0;
 }
