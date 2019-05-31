@@ -1,11 +1,11 @@
 /*
  * Author: Elise Hebert
  * File: randomtestadventurer.c
- * Date: 5/17/2019
+ * Date: 5/31/2019
  * Description: This is a random test of the card Adventurer in the Dominion
  * game. It will generate 2000 tests and randomly create a game state each time
  * and check to see if the expected plays occur. Note: used betterTestDrawCard.c
- * as a guide
+ * as a guide. This is Kyle's rendition of Adventurer
  *
 */
 
@@ -22,9 +22,8 @@ int main() {
   //Setting treasure and index to 0 because the assumption is this would be called
   //in cardEffect which does set these to 0. If it doesn't that is beyond the
   //scope of this random test so I will set them as is expected.
-  int tr = 0, currplayer, index = 0;
+  int currplayer, index = 0;
   struct gameState G;
-  int tmp[MAX_HAND];
   int seed = 1000;
   int players = 2;
   int handBefore;
@@ -46,7 +45,7 @@ int main() {
     handBefore = G.handCount[currplayer]+1;
     //To account for the adventurer card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
-    adventurerCard(tr, &G, currplayer, tmp, index);
+    adventurerCard(&G);
     if (G.handCount[currplayer] != handBefore+2) {
       printf("--FAIL Handcount is not increased by 2\n");
       error++;
