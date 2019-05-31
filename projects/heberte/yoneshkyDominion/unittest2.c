@@ -15,7 +15,7 @@
 
 int main() {
   int  discarded = 1;
-  int handpos = 0, choice1 = 0, choice2 = 0; //Set up for the adventurer
+  int handpos = 0, choice1 = 0, choice2 = 0, bonus = 0; //Set up for the adventurer
   int seed = 1000;
   int players = 2;
   int currPlayer = 0;
@@ -38,7 +38,7 @@ int main() {
   choice1 = 1;
   choice2 = 0;
   printf("Coins before = %d\n", testgame.coins);
-  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
+  cardEffect(minion, choice1, choice2, 0, &testgame, handpos, &bonus);
 
   printf("Coins = %d\n", testgame.coins);
   if (testgame.coins != (game.coins + 2)) {
@@ -56,7 +56,7 @@ int main() {
   for (i = 0; i < 3; i++) {
     testgame.hand[otherPlayer][i] = gold;
   }
-  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
+  cardEffect(minion, choice1, choice2, 0, &testgame, handpos, &bonus);
 
   printf("Cards in hand = %d, Other player card count = %d\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   if (testgame.handCount[currPlayer] != 4) {
@@ -78,7 +78,7 @@ int main() {
   for (i = 0; i < 6; i++) {
     testgame.hand[otherPlayer][i] = gold;
   }
-  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
+  cardEffect(minion, choice1, choice2, 0, &testgame, handpos, &bonus);
 
   printf("Cards in hand = %d, Other player card count = %d\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
   if (testgame.handCount[currPlayer] != 4) {
@@ -96,7 +96,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 1;
-  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
+  cardEffect(minion, choice1, choice2, 0, &testgame, handpos, &bonus);
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer]-discarded);
@@ -115,7 +115,7 @@ int main() {
   memcpy(&testgame, &game, sizeof(struct gameState));
   choice1 = 0;
   choice2 = 0;
-  minionCard(&testgame, handpos, currPlayer, choice1, choice2);
+  cardEffect(minion, choice1, choice2, 0, &testgame, handpos, &bonus);
 
   printf("Coins = %d, expected coins = %d\n", testgame.coins, game.coins);
   printf("Cards = %d, expected cards = %d\n", testgame.handCount[currPlayer]-discarded, game.handCount[currPlayer]-discarded);

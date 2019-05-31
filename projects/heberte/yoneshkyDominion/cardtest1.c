@@ -23,7 +23,6 @@ int main() {
   int players = 2;
   int currPlayer = 0;
   int returnstate;
-  int i;
   int error = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
   int cards[10] = {adventurer, embargo, village, minion, mine, cutpurse,

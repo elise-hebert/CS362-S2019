@@ -14,10 +14,9 @@
 
 
 int main() {
-  int handpos = 0;
+  int handpos = 0, bonus = 0;
   int seed = 1000;
   int players = 2;
-  int currPlayer = 0;
   int otherPlayer = 1;
   int error = 0;  //For asserts, if there are no errors, then it passed all tests
   struct gameState game, testgame;
@@ -37,7 +36,7 @@ int main() {
   testgame.hand[otherPlayer][0] = copper;
   testgame.hand[otherPlayer][1] = estate;
   testgame.handCount[otherPlayer] = 2;
-  cutpurseCard(&testgame, currPlayer, handpos);
+  cardEffect(cutpurse, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Card count in hand = %d, cards  in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
   if (testgame.handCount[otherPlayer] != 1) {
@@ -52,7 +51,7 @@ int main() {
   testgame.hand[otherPlayer][0] = estate;
   testgame.hand[otherPlayer][1] = -500;
   testgame.handCount[otherPlayer] = 1;
-  cutpurseCard(&testgame, currPlayer, handpos);
+  cardEffect(cutpurse, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Card count in other hand = %d, card in other hand = %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0]);
   if (testgame.handCount[otherPlayer] != 1) {
@@ -67,7 +66,7 @@ int main() {
   testgame.hand[otherPlayer][0] = gold;
   testgame.hand[otherPlayer][1] = estate;
   testgame.handCount[otherPlayer] = 2;
-  cutpurseCard(&testgame, currPlayer, handpos);
+  cardEffect(cutpurse, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Card count in hand = %d, cards in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
   if (testgame.handCount[otherPlayer] != 2) {
@@ -82,7 +81,7 @@ int main() {
   testgame.hand[otherPlayer][0] = silver;
   testgame.hand[otherPlayer][1] = estate;
   testgame.handCount[otherPlayer] = 2;
-  cutpurseCard(&testgame, currPlayer, handpos);
+  cardEffect(cutpurse, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Card count in hand = %d, cards in hand = %d %d\n", testgame.handCount[otherPlayer], testgame.hand[otherPlayer][0], testgame.hand[otherPlayer][1]);
   if (testgame.handCount[otherPlayer] != 2) {
@@ -97,7 +96,7 @@ int main() {
   testgame.hand[otherPlayer][0] = -500;
   testgame.hand[otherPlayer][1] = -500;
   testgame.handCount[otherPlayer] = 0;
-  cutpurseCard(&testgame, currPlayer, handpos);
+  cardEffect(cutpurse, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Card count in hand = %d\n", testgame.handCount[otherPlayer]);
   if (testgame.handCount[otherPlayer] != 0) {

@@ -22,7 +22,7 @@ int main() {
   //Setting treasure and index to 0 because the assumption is this would be called
   //in cardEffect which does set these to 0. If it doesn't that is beyond the
   //scope of this random test so I will set them as is expected.
-  int currplayer, index = 0;
+  int currplayer;
   struct gameState G;
   int seed = 1000;
   int players = 2;
@@ -45,7 +45,7 @@ int main() {
     handBefore = G.handCount[currplayer]+1;
     //To account for the adventurer card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
-    adventurerCard(&G);
+    adventurerEffect(&G);
     if (G.handCount[currplayer] != handBefore+2) {
       printf("--FAIL Handcount is not increased by 2\n");
       error++;

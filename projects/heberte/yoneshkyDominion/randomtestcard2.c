@@ -14,7 +14,7 @@
 
 int main() {
   //Setting exected drawn cards and the current player
-  int cards = 4, currplayer;
+  int cards = 4, currplayer, bonus = 0;
   struct gameState G;
   int seed = 1000;
   int players = 2;
@@ -51,7 +51,7 @@ int main() {
     //To account for the smithy card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
     G.hand[currplayer][G.handCount[currplayer]-1] = council_room;
-    result = council_roomCard(&G, currplayer, G.handCount[currplayer]-1);
+    result = cardEffect(council_room, 0, 0, 0, &G,G.handCount[currplayer]-1, &bonus);
     //Expecting the hand to have 2 more than previous (because you gain 3 and discard 1)
     if (G.handCount[currplayer] != handBefore+cards-1) {
       printf("--FAIL Handcount is not increased by 3\n");
@@ -92,7 +92,7 @@ int main() {
       }
     }
     if (G.discardCount[currplayer] != discardBefore+1) {
-      printf("--FAIL Discard count does not have Smithy\n");
+      printf("--FAIL Discard count wrong\n");
       error++;
       discarderr++;
     }

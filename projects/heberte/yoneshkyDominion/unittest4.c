@@ -16,7 +16,7 @@
 int main() {
   int  discarded = 1;
   int addedCards = 4;
-  int handpos = 0;
+  int handpos = 0, bonus = 0;
   int seed = 1000;
   int players = 2;
   int currPlayer;
@@ -38,7 +38,7 @@ int main() {
   currPlayer = 0;
   otherPlayer = 1;
   printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(&testgame, currPlayer, handpos);
+  cardEffect(council_room, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], game.handCount[currPlayer] + addedCards - discarded);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer] + discarded);
@@ -59,7 +59,7 @@ int main() {
   currPlayer = -1;
   otherPlayer = 1;
   printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(&testgame, currPlayer, handpos);
+  cardEffect(council_room, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], -1);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);
@@ -80,7 +80,7 @@ int main() {
   currPlayer = 2;
   otherPlayer = 1;
   printf("Before play, Current Player has %d cards, other player has %d cards\n", testgame.handCount[currPlayer], testgame.handCount[otherPlayer]);
-  council_roomCard(&testgame, currPlayer, handpos);
+  cardEffect(council_room, 0, 0, 0, &testgame, handpos, &bonus);
 
   printf("Cards for current player = %d,  expected number = %d\n", testgame.handCount[currPlayer], -1);
   printf("Cards for other player = %d,  expected number = %d\n", testgame.handCount[otherPlayer], game.handCount[otherPlayer]);

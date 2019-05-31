@@ -41,7 +41,7 @@ int main() {
     //To account for the smithy card, add 1 to the hand in case they have 0
     G.handCount[currplayer]++;
     G.hand[currplayer][G.handCount[currplayer]-1] = smithy;
-    result = smithyCard(&G, G.handCount[currplayer]-1);
+    result = smithyEffect(&G, G.handCount[currplayer]-1);
     //Expecting the hand to have 2 more than previous (because you gain 3 and discard 1)
     if (G.handCount[currplayer] != handBefore+cards-1) {
       printf("--FAIL Handcount is not increased by 2\n");
